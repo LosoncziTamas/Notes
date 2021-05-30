@@ -22,3 +22,37 @@
 #### Pinhole camera
 
 - Put together different light contributions and you get a picture.
+
+#### Seeing is believing
+- Our visual system is not a light meter. It tries to compensate for shadows and other distractions so that we can properly percieve the nature of the objects.
+
+#### View frustum
+- In CG we think of a camera with the image being formed in front of the viewer.
+- The pyramid shaped view of the world is called the view frustum. Frustum means pyramid with it's top chopped off.
+- We want to know how much light is coming from each direction.
+- Each light emits photons which bounce around the world. In a camera we gather photons from the world and these create a photograph.
+- In CG we try to determine how many photons are coming in each direction. Whatever amount of light we gather from a direction, we record a pixel in the screen.
+
+#### Screen Door
+- Screen as a window into a 3D world. 
+
+#### 3D scene
+- The computer renders a 3D scene by determining how much light comes from each direction.
+- First we'll have to define a world. Geometry, material, animation, lights, camera.
+
+#### How many pixels?
+- GPU consists of specialized units working in parallel.
+- For example 1920 x 1200 pixel monitor, 60 FPS frame rate. 138240000
+- Pixel = picture element. The minimal number of pixels to compute.
+
+#### Light and rendering
+- In theory you could fully simulate the world around you. Photon starts from a light source, hit atoms, they are reflected, absorbed.
+- You put a camera in the scene and whatever photons actually enter the camera's lens would determine the image.
+- This would take a huge amount of computation.
+
+#### Reversing the process
+- It would be expensive to track all the photons in a scene. To avoid this level of computation. In CG make assumptions:
+- Only the photons that reach the camera are the ones needed to make the image.
+- Instead of sending photons from the the light, we essentially cast a ray from the eye through each pixel and see what's out there. When a surface is seen at a pixel we then compute the direct effect of each light on that surface. Add up all the light contributions and you have a reasonable proximation of what the surface looks like.
+
+https://classroom.udacity.com/courses/cs291/lessons/68866048/concepts/964035330923

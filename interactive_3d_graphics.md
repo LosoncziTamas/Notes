@@ -54,5 +54,11 @@
 - It would be expensive to track all the photons in a scene. To avoid this level of computation. In CG make assumptions:
 - Only the photons that reach the camera are the ones needed to make the image.
 - Instead of sending photons from the the light, we essentially cast a ray from the eye through each pixel and see what's out there. When a surface is seen at a pixel we then compute the direct effect of each light on that surface. Add up all the light contributions and you have a reasonable proximation of what the surface looks like.
+- Every surface is considered to be visible to a light unless it faces away from that light source. No objects cast shadows.
+- Simpler rendering: without lights and just draw each object with a solid color.
 
-https://classroom.udacity.com/courses/cs291/lessons/68866048/concepts/964035330923
+#### Teapot
+- A model created by Martin Newell. Who is also creator of the painter's algortihm.
+- The curves are represented by cubic Bézier Splines.
+
+https://classroom.udacity.com/courses/cs291/lessons/68866048/concepts/964035360923

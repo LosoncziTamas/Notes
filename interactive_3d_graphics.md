@@ -61,4 +61,37 @@
 - A model created by Martin Newell. Who is also creator of the painter's algortihm.
 - The curves are represented by cubic Bézier Splines.
 
-https://classroom.udacity.com/courses/cs291/lessons/68866048/concepts/964035360923
+#### A Jog down the pipeline
+- GPU uses rasterization or scan conversion.
+- A rendering pipeline treats each object separately.
+	- First, the application sends objects to the GPU.
+		- 3D triangles, each triangle is defined by the full locations of it's 3 points.
+		- An application converts a cube into a few triangles.
+	- Second, the triangles are modified by the camera's view of the world along with whatever modelling transform is applied.
+		- A modelling transform is way to modify the location, orientation and size of the part.
+		- After the object is moved to it's location it is checked whether it is inside the view frustum or not.
+			- Clipping
+		-  The camera and modelling transforms compute the location of each triangle on the screen.
+		- If the triangle is partially or fully inside the frustum, the thrree points of the triangle on the screen are then used in a process called rasterization.	
+	- Rasterization identifies all the pixels whose centers are inside the triangle (fills in the triangle).
+
+#### Pipeline parallelism
+- The idea of a pipeline is that every object is dealt with once.
+- The advantage of a pipeline is that each part of the pipeline can be worked on as a separate task at the same time.
+- GPUs are designed to use pipelines and parallelism to get extremely fast rendering speeds.
+- The bottleneck (slowest stage) determines how fast anything is going to come out of the pipeline.
+- The bottleneck can change over time. 
+- GPU designers use different techniques to perform load balancing (ex.: FIFO, unified shaders).
+- 
+
+#### Painter's algorithm
+- What happens if two triangles overlap on the screen? Which one is visible?
+- Draw each objects on top of the other. Sort the objects based on their distance from the camera back to front. And render the most distant first, next the next closest object and so on.
+
+#### Z-Buffer
+- The GPU solves the visibility problem by using Z-Buffer.
+- Z stands for distance from the camera. Buffer means data array (ex.: image)
+- For the image in addition to storing a color at each pixel, we also store a distance (z-depth).
+	- float ranging from 0 (close to the eye) to 1 (maximum distance)
+
+https://classroom.udacity.com/courses/cs291/lessons/68866048/concepts/964035480923

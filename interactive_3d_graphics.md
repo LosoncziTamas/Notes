@@ -93,5 +93,30 @@
 - Z stands for distance from the camera. Buffer means data array (ex.: image)
 - For the image in addition to storing a color at each pixel, we also store a distance (z-depth).
 	- float ranging from 0 (close to the eye) to 1 (maximum distance)
+- At each pixel the distance of the object to the camera is used to compute it's z depth (a value from 0 to 1).
+	- The computed value is checked against the value stored in the Z-Buffer (which is all initialized to 0).
+	- If the object's distance is lower then the z depth value stored the object is closer to the camera. 
+	- We'll use the object's color at this pixel.
 
-https://classroom.udacity.com/courses/cs291/lessons/68866048/concepts/964035480923
+#### Z-Buffer optimization
+- Assume it's 1 cycle to read, write to the Z-Buffer. And 1 cycle to write a color.
+-  The new value coming in is called source and the old value called destination.
+- When the source is smaller than the destination it's 3 cycles (read, save, store)
+- When the source is greater then the destination it's only 1 cycle (read)
+- Drawing object from back to front is the worst case.
+- Drawing objects from front to back is the most optimal way.
+
+#### WebGL
+- API Based on OpenGL ES
+- State based API
+	- Setup how you want the GPU to do something, then send a geometry to render.
+	- Fine grained control
+
+### Problem set
+
+#### Frame skipping
+- Assume a frame is not computed until the previous frame is displayed.
+- If you don't get the work done in time to catch the current frame, you have to wait until the next one comes.
+
+
+https://classroom.udacity.com/courses/cs291/lessons/91160556/concepts/1158078460923

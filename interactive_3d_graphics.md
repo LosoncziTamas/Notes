@@ -118,5 +118,9 @@
 - Assume a frame is not computed until the previous frame is displayed.
 - If you don't get the work done in time to catch the current frame, you have to wait until the next one comes.
 
+#### FPS vs. milliseconds
+- Using miliseconds per frame can be easier to work with mathematically.
+- Can be used to determine a budget.
 
-https://classroom.udacity.com/courses/cs291/lessons/91160556/concepts/1158078460923
+
+https://classroom.udacity.com/courses/cs291/lessons/91160556/concepts/1158078520923

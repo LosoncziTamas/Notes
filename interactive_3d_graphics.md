@@ -122,5 +122,10 @@
 - Using miliseconds per frame can be easier to work with mathematically.
 - Can be used to determine a budget.
 
+#### Light Field Dimensions
+- Our eyes detect radiance coming from each direction.
+- Brain figures out distances from visual cues.
+- Light field is that for any point in the universe and for all directions from that point there is an incoming radiance value that we can record.
+- We record a radiance for each different, specific direction we look. To form an image we find the radiance coming through each pixel.
 
-https://classroom.udacity.com/courses/cs291/lessons/91160556/concepts/1158078520923
+https://classroom.udacity.com/courses/cs291/lessons/91160556/concepts/1158078580923

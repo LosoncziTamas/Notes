@@ -127,5 +127,30 @@
 - Brain figures out distances from visual cues.
 - Light field is that for any point in the universe and for all directions from that point there is an incoming radiance value that we can record.
 - We record a radiance for each different, specific direction we look. To form an image we find the radiance coming through each pixel.
+- At least 5 dimensions are needed to capture the radiance from any location and direction in the universe: 3 dimensions for the locations and 2 for the direction (altitude and swivel angle).
+- Our eyes just detect radiance not distance.
+- Put enough radiance readings for a given location and set of directions and you get an image.
 
-https://classroom.udacity.com/courses/cs291/lessons/91160556/concepts/1158078580923
+### Points, vectors and meshes
+#### Coordinate system
+- Point is a location in space.
+- A 3D vector defines a direction in space.
+- A location in space has to be defined with respect to something else.
+- Cartesian coordinate system has an origin and three direction vectors called x, y, z.
+- The origin is some fixed point in space.
+- The three direction vectors define the axes of the coordinate system. They are normally each perpendicular to the other.
+- It's possible to define a coordinate system with axes that are not perpendicular.
+-  With a given origin and 3 vectors we can define the location of any point in space.
+- 3D vectors are described by a similar coordinate system, except that the origin is not needed. A vector describes a motion.
+- Time analogy: a specific time is like a point and an amount of time is like a vector.
+
+### Left-handed vs. right handed
+- Coordinate systems have an orientation to them. 
+- Right handed coordinate system: z-axis coming towards the viewer, x-axis going right, y-axis going up.
+	- Thumb along the x-axis, index finger along the y-axis, mideel finger is the z-axis.
+	- You can only do this with your right hand.
+- Both are equally valid.
+- To convert between these systems is simply a matter of negating the z-coordinate value.
+
+
+https://classroom.udacity.com/courses/cs291/lessons/90856897/concepts/968210180923

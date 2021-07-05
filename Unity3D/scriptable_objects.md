@@ -104,7 +104,9 @@ public MySO mySOInstance;
 - Supports null.
 
 ### Dual Serialisation
-- Supported by JsonUtility.
+#### Level loader use case:
+	- Collects information from the scene and packs them into SO.
+	- The LevelEditor can also use it.
 
 ```Csharp
 class LevelLayout: ScriptableObject
@@ -115,11 +117,70 @@ class LevelLayout: ScriptableObject
 	public Vector2 startPosition;
 }
 ```
-```Csharp
 
+```Csharp
+// Load built-in level from AssetBundle
+level = lvlsBundle.LoadAsset<LevelLayout>("level2.asset");
+
+// Load level from Json
+level = CreateInstance<LevelLayout>();
+var json = File.ReadAllText("customlevel.json");
+JsonUtility.FromJsonOverWrite(json, level);
 ```
+
+- You can patch part of the object with `FromJsonOverWrite`.
+
+### Reload-Proof Singleton
+- Domain reload: recompile, serialize, throw away managed code, load the new assemblies.
+- Data is lost on the managed part when this happens.
+- You can reload the data with this pattern.
+
+```CSharp
+class MySingleton : ScriptableObject
+{
+	private static MySingleton _instance;
+
+	public static MySingleton Instance { get {
+		if (!_instance) {
+			_instance = Resources.FindObjectOfType<MySingleton>();
+		}
+		if (!_instance) {
+			_instance = CreateInstance<MySingleton>();
+		}
+		return _instance;
+	}}
+}
+```
+
+### Delegate objects
+- SOs can contain methods, not only data.
+- Can be used as a pluggable implementation.
+- You have something in the scene that needs some work. You have an SO that actually does the work. The scene calls the object (and maybe passes itself as a parameter). An asset can't reference things in the scene.
+- Strategy pattern
+
+```CSharp
+abstract class PowerupEffect : ScriptableObject 
+{
+	public abstract void Apply(GameObject collector);
+}
+
+public void OnTriggerEnter(GameObject toucher)
+{
+	Destroy(gameObject);
+	powerupEffect.Apply(toucher);
+}
+
+public class HealthBuff : PowerupEffect 
+{
+	public float amount;
+	public override void Apply(GameObject collector) 
+	{
+		collector.GetComponent<Health>().value += amount;
+	}
+}
+```
+- Delegating the behaviour. Separating the gameplay consequences.
 - 
 
-
-
+https://www.youtube.com/watch?v=6vmRwLYWNRo&t=2296s
 

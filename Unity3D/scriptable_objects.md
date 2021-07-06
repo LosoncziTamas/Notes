@@ -105,8 +105,8 @@ public MySO mySOInstance;
 
 ### Dual Serialisation
 #### Level loader use case:
-	- Collects information from the scene and packs them into SO.
-	- The LevelEditor can also use it.
+- Collects information from the scene and packs them into SO.
+- The LevelEditor can also use it.
 
 ```Csharp
 class LevelLayout: ScriptableObject
@@ -180,7 +180,9 @@ public class HealthBuff : PowerupEffect
 }
 ```
 - Delegating the behaviour. Separating the gameplay consequences.
-- 
+- You don't have to define the coroutine on the same Monobehaviour that runs it. It can live in a SO.
+- Saving and loading data inbetween scene loads is also possible with SOs.
 
-https://www.youtube.com/watch?v=6vmRwLYWNRo&t=2296s
-
+### Conclusion
+- Simple but flexible.
+- Nice workflows

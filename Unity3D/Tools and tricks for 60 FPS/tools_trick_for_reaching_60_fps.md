@@ -61,4 +61,27 @@ https://www.youtube.com/watch?v=mQ2KTRn4BMI&list=WL&index=61&t=12s
 
 ### Arrays! Not Lists.
 
-https://youtu.be/mQ2KTRn4BMI?t=2563
+### localPosition has been constant
+- When Unity sets the same position as was in the last frame then it is skipped.
+- Whenever you set a position Unity posts messages down the Node hierarchy to make sure every nodes knows that it has been changed.
+- When you have many nodes, then it gets expensive to move it.
+- The same applies when you change the rotation as well.
+
+### Movement cost reduction
+- Using `SetLocalPositionAndRotation(...)` avoids paying the penalty twice.
+  - It sets position and rotation and then sends the messages to subnodes.
+- `GetPositionAndRotation(...)` avoids paying a transform penalty twice when getting gloval position and rotation.
+- By changing the actual source code you can remove the message sending mechanism. This allows you to save some time. However, this is only useful if other subsystem (ex.: animation) notifies the nodes about the change.
+
+### Different platforms are different
+- Lookup table for Sin instead of Mathf.Sin()
+  - It performed better on some platforms but worse on others.
+
+### Basic tips to avoid spikes
+- Don't generate garbage. Any memory allocation is slow and garbage will GCed at some point. Use GC Alloc column in the profiler.
+- Don't use `Instantiate()` at runtime
+- Event Subscription is expensive, Dictionaries have huge performance spikes the first time they are referenced.
+- Don't do string concatenations. Use `StringBuilder` instead.
+- Avoid using `Update()` and `FixedUpdate()`.
+  - Whenever it is called there is an overhead. Not shoed in the profiler.
+  - You can make your own UpdateManager that collects your scripts in an array. The manager then calls a custom update function on the script.

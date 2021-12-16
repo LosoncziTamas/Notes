@@ -33,3 +33,4 @@
   - Add keyframes. The animator will animate between these frames.
   - Make sure loop time is unselected so it's not looping.
 - Add bouncing.
+- 

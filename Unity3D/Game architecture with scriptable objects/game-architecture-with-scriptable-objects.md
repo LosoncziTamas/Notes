@@ -135,6 +135,10 @@ public class GameEventListener : Monobehaviour
 
 ### Runtime Sets
 - Keep track of all objects in the scene.
+  - For example buildings placed in an RTS.
+  - Items on map.
+- For example there are some objects in the game and they add themselves to a RunTime set. There is a script that disables a random object in the list.
+  - Since this is a scriptable object the references can be maintained within scene load. A prefab referencing an asset.  
 - Avoid race conditions.
 - More flexible then Unity tags. Strings are error prone. Only one tag per object.
 
@@ -160,4 +164,31 @@ public abstract class RuntimeSet<T> : ScriptableObject
 	}
 }
 ```
+
+### Enums
+- Enumeration is code driven. Must change in code.
+  - The more code is removed the less programmer bugs you can have in the project.
+- Makes sense in fixed lists.
+- Difficult to reorder. Serialized based on index.
+- Can't hold additional data.
+- These problems can be solved by using SO.
+  - Elements SO
+
+### Asset Based Systems
+- We can reference a SO that contains the entire definition and all of the code that gets executed for a system.
+- Functions inside SO.
+
+#### Generic Systems
+- System is a SO Asset in project
+- Referenced by other prefabs or by other scriptable objects.
+- No code lookup. Flexible.
+- No scene-only references.
+
+##### Inventory example
+- ScriptableObject master list for all item available.
+- SO per item. This means that changing an item doesn't change this massive asset.
+- Lookup happens in OnValidate() (or other asset event) of the master list.
+- Different inventories in different scenes.
+
+![alt](inventory.png)
 

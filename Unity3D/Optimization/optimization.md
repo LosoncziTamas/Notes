@@ -1,0 +1,50 @@
+### How to actually optimize your game
+
+- Change shadows to hard shadow, update the strength parameter to get soft shadow effect.
+- Open Project Settings and switch to the `medium` preset. (or you can manually tweak the parameters)
+    - Disable Anisotropic textures
+    - Disable Antti Aliasing
+    - Use only hard shadows
+    - Change shadow resolution to medium
+    - Set shadow cascades to no cascades
+    - Disable VSync
+- Texture maps
+    - Enable `Generate Mip Maps`
+    - Lower the max size
+    - Use crunch compression
+- Camera
+    - Lower the far clipping planes if possible
+- Set the environment objects to static
+- Canvas
+    - Select all UI elements that not clickable
+        - Uncheck `Raycast Target`
+        - Uncheck `Maskable`
+    - Select the canvas and disable `Pixel Perfect`
+- Rigidbodies
+    - Set the collision detection to `Discrete`
+- Android
+    - Select mobile shaders and use `Mobile/VertexLit`. It is supposed to be a very efficient shader on mobile devices.
+    - If you want to keep the shadows then use `Mobile/VertexLit (Noly Directional Light)`
+- Shaders
+    - Disable reflections
+- Lighting
+    - Directional Light
+        - Select Mixed or Baked (if you have dynamic objects then use mixed)
+        - Deactivate the dynamic objects in the scene and bake the light with the following settings:
+            - Lighting Mode: Subtractive
+            - Lower Lightmap Resolution 
+            - Lower the Lightmap Size
+            - Make sure `Compress Lightmap` is enabled.
+        - Switch the Lightmapper to `Progressive GPU`
+        - Generate the map
+        - Select all 3d models used in the game and select `Generate Lightmap UVs` & Apply
+        - Regenerate the lighting
+        - Now the ambient color will only affect the dynamic objects.
+- Physics
+    - Disable `Auto Sync Transforms`
+- Material
+    - Get rid off smoothness (set to 0)
+    - Disable Specular Highlights
+    - Enable GPU instancing
+- Sprites
+    - Make sure Generate Mip Maps & Crunch compression is enabled

@@ -18,3 +18,18 @@
 - The object needs to be a static object.
     - Make sure it is also Lightmap static.
     - Also you need a lighting on them, which should be set to `Baked`
+- Lightmapper settings
+    - Fiddle around with it:
+        - Padding to prevent bleeding
+        - Ambient occlusion adds a little bit extra detail
+        - Indirect intensity to control overall lightness
+        - Lightmap parameters (use high resolution if you need fine detailed shadows)
+- Once the baking is done the directional light has no effect regarding shadows.
+- Directional mode is good if you use normal maps or specularity.
+    - It can take into accoount the baked lighting information.
+- Larger items are good candidates for light baking. And lightprobe groups are better fit for small objects.
+- Keep in mind the number of lightmaps.
+    - Saves time at runtime but you'll need to load more textures.
+- Lower the `Scale In Lightmap` (`Mesh Renderer/Lightmap Settings`) if you have objects that do not need that much shadow detail.
+
+

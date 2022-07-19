@@ -1,0 +1,24 @@
+### Light Probes
+
+- Light baking makes your game more detailed and performant.
+    - However not all objects are static.
+    - Light Probes are a solution for this.
+- How it works?
+    - When you bake lighting then Unity will simulate real light rays bouncing around the scene.
+    - Then it is turned into textures that the object will use.
+    - Light Probes allow us to add certain points around our scene that will store the lighting information in that particular place.
+    - Moving objects check which light probes are nearby and light themselves based on the information in those probes.
+- Setup
+    - Set the scene ready for baking. 
+    - Mark static objects as static.
+    - Mark direction light as static as well.
+    - Change the lighting type to Mixed (realtime and baked)
+    - This way the light will bake in all the lighting information on all static objects and still have our real time objects cast shadows.
+    - Lighting settings
+        - Auto generate lightmap
+- Add lightprobes
+    - Light/Light Probe Group
+    - Distribute the probes around the scene
+    - Add additional light probes where there is a lighting condition change in the scene (ex.: color, shadows)
+    - Do not place them inside other objects.
+- If there is any weird behaviour, turn off auto generation.

@@ -35,6 +35,7 @@
     - to share the same material
     - to use the same sprite asset
     - to be clipped by the same mask
+    - to have RectTransform that share the same Z position.
 - Unity Sprite atlas
     - `Objects for packing`, assign the images 
     - disable "allow rotation" if contains Canvas UI element Textures, as when Unity rotates the Textures in the Sprite Atlas during packing, it rotates their orientation in the Scene as well.

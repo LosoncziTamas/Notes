@@ -37,4 +37,31 @@
     -  There is less resistance after the threshold of motion.
     -  The amount of the frictional force.
 - Friction combine
-    - 
+    - If two objects with friction touch each other how the friction value is determined.
+    - In real world every two object has it's different frictional coefficient.
+
+### Critical angle
+- Ciritcal force is the maximum amount of friction a system can bear.
+    - This is the static friction (stickiness between the surface) times the contact force.
+- Static friction 0.6 means at 60% of the contact force things will start moving. How much will it move is question of dynamic friction.
+- Slop angles
+    - cirital angle equals to the tangent of the slope angle.
+    - if at angle 45 something can tolerate a slope of 45 degrees it has a coefficient of static friction of one tan(45)
+- Everything is a little bit stickier in Unity.
+
+### Friction combine
+- Friction combine settings determines the friction between two objects.
+- What happens on conflict (different combine settings):
+    - There is a precedence to what to apply.
+- Bounce combine is the same principle.
+
+### Dynamic friction
+- How much resistance the movement we have once the thing starts slipping.
+- Also relates to the terminal velocity (when no external force and falls at a constant speed).
+- How fast the object is sliding depends on the dynamic friction.
+- Stribeck curve
+    - Tells us how the friction varies with speed.
+    - You can change dynamic friction as you go, via script.
+
+### Friction direction
+- Doesn't work in Unity.

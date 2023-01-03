@@ -10,13 +10,13 @@
 - HATEOAS (Hypermedia as the engine of the application state) means that when you are desiging an API, you want to pretend that the costumer of the API knows nothing about the API (data format). It's all about representing REST and state in documents and linking those documents to other resources. It's a further restriction on REST architecture.
 - It's not a standard, it's an architecture style and different people interpret it differently. But there are some conventions.
 ### Resources:
-    - Resources are data representations, not behaviour or action. Use nouns.
-    - If your resources are "coarse-grained" rather than "fine-grained" (generic rather then specific) you can cover a lot of use-cases.
-    - Don't tightly couple resources with behaviour. (You don't want to use it like RPC). Keep it simple.
-    - Fundamentally there are two types of resources:
-        - Collection resource (collection of ) ex.: /applications
-        - Instance resource (single items/docs) ex.: /application/asdas2
-    - And we can built robust API's based on these concepts.
+- Resources are data representations, not behaviour or action. Use nouns.
+- If your resources are "coarse-grained" rather than "fine-grained" (generic rather then specific) you can cover a lot of use-cases.
+- Don't tightly couple resources with behaviour. (You don't want to use it like RPC). Keep it simple.
+- Fundamentally there are two types of resources:
+    - Collection resource (collection of ) ex.: /applications
+    - Instance resource (single items/docs) ex.: /application/asdas2
+- And we can built robust API's based on these concepts.
 ### Behavior:
 - HTTP already supports behaviour via it's methods (PUT, GET, POST, DELETE, HEAD). These methods can be used to implement CRUD, it's imporant that it's not a 1:1 correspondence. POST and PUT can be both used to implement both update and create.
 - You can use PUT for create if the client already knows the resource ID, containing all the data for the request.
